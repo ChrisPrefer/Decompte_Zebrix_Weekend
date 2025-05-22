@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <title>Décompte WE Montagne</title>
   <style>
-    body {
-      background-color: #001f3f;
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
       font-family: Arial, sans-serif;
-      color: #ffffff;
+      font-size: 48px;
+      color: white;
       text-align: center;
-      padding-top: 20vh;
-      font-size: 3em;
+    }
+
+    #countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -25,23 +33,10 @@
       const now = new Date().getTime();
       const distance = countDownDate - now;
 
-      if (distance < 0) {
+      if (distance <= 0) {
         countdownElement.innerHTML = "C'est parti !";
         clearInterval(timer);
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML =
-        `J-${days} ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
-    }
-
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
+      const days = Math.floor(dis
