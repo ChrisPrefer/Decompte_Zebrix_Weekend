@@ -5,27 +5,28 @@
   <title>Décompte WE Montagne</title>
   <style>
     body {
-      background-color: transparent;
-      font-family: 'Arial', sans-serif;
-      color: white;
-      font-size: 48px;
+      background-color: #001f3f;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
       text-align: center;
-      margin-top: 20%;
+      padding-top: 20vh;
+      font-size: 3em;
     }
   </style>
 </head>
 <body>
   <div id="countdown">Chargement...</div>
+
   <script>
-    const countDownDate = new Date("August 1, 2026 00:00:00").getTime();
-    const countdown = document.getElementById("countdown");
+    const countDownDate = new Date("2026-08-01T00:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
 
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = countDownDate - now;
 
-      if (distance <= 0) {
-        countdown.innerHTML = "C'est parti !";
+      if (distance < 0) {
+        countdownElement.innerHTML = "C'est parti !";
         clearInterval(timer);
         return;
       }
@@ -35,8 +36,8 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML =
-        `J-${days} ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      countdownElement.innerHTML =
+        `J-${days} ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
     }
 
     updateCountdown();
